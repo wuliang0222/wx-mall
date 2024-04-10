@@ -1,0 +1,113 @@
+page {
+  padding-bottom: 90rpx;
+}
+.product_swiper swiper {
+  height: 100vw;
+  text-align: center;
+}
+.product_swiper swiper image {
+  height: 95vw;
+}
+.product_show {
+  display: flex;
+}
+.product_show .product_price {
+  flex: 1;
+  display: flex;
+  padding: 15rpx;
+  font-size: 42rpx;
+  font-weight: 600;
+  color: var(--themeColor);
+}
+.product_show .product_change {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(90deg, #ff7310, #fe3f00);
+  color: #fff;
+  font-size: 30rpx;
+  font-weight: 600;
+  border-radius: 50rpx;
+}
+.product_name {
+  padding: 15rpx;
+  font-size: 40rpx;
+  font-weight: 600;
+  border-top: 1rpx solid #dedede;
+}
+.product_description {
+  padding: 0 10rpx 25rpx 10rpx;
+  border-bottom: 1rpx solid #dedede;
+}
+.desc_tabs .tabs_title {
+  display: flex;
+}
+.desc_tabs .tabs_title .title_item {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 15rpx 0;
+}
+.desc_tabs .tabs_title .active {
+  color: var(--themeColor);
+}
+.desc_tabs .tabs_content rich-text img {
+  width: 50px;
+}
+.btm_tool {
+  padding: 10rpx;
+  border-top: 1px solid #ccc;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 90rpx;
+  background-color: #fff;
+  display: flex;
+}
+.btm_tool .tool_item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 24rpx;
+  position: relative;
+}
+.btm_tool .tool_item button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.btm_tool .btn_cart {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(90deg, #fdcf00, #fd9b00);
+  color: #fff;
+  font-size: 30rpx;
+  font-weight: 600;
+  border-bottom-left-radius: 50rpx;
+  border-top-left-radius: 50rpx;
+}
+.btm_tool .btn_buy {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(90deg, #ff7310, #fe3f00);
+  color: #fff;
+  font-size: 30rpx;
+  font-weight: 600;
+  border-bottom-right-radius: 50rpx;
+  border-top-right-radius: 50rpx;
+}

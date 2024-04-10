@@ -1,0 +1,59 @@
+.index_swiper {
+  swiper {
+    height: 100vw;
+
+    image {
+      height: 95vw;
+    }
+  }
+}
+
+.index_bigType {
+  padding-top: 20rpx;
+  background-color: #F7F7F7;
+  .bigTypeRow {
+    display: flex;
+    navigator {
+      flex: 1;
+
+      image {
+        width: 150rpx;
+      }
+    }
+  }
+}
+
+.index_hot_product {
+  .product_title {
+    font-size: 32rpx;
+    background-color: #E0E0E0;
+    font-weight: 600;
+    padding: 20rpx;
+    text-align: center;
+    color: var(--themeColor);
+  }
+
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+
+    .product_detail {
+      width: 46%;
+      margin: 15rpx;
+      text-align: center;
+      border: black 1px solid;
+
+      navigator {
+        image {
+          background-color: #F5F5F5;
+        }
+
+        .product_name {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+}

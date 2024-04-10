@@ -1,0 +1,6 @@
+
+<view>
+  <van-uploader file-list="{{ fileList }}" preview-full-image="true" multiple="true" preview-image="true" bind:after-read="show" max-count="5" bind:delete="del" />
+  
+  <van-button bind:tap="uoload">上传</van-button>
+  </view>

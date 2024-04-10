@@ -1,0 +1,8 @@
+<view>
+  <button bindtap="uploadUpper">上衣</button>
+  <button bindtap="uploadLower">裤子</button>
+  <button bindtap="uploadDress">裙子</button>
+  <button bindtap="uploadBody">身体</button>
+  <button bindtap="upload">上传</button>
+  <van-uploader file-list="{{imgUrl}}" max-count="1" deletable="{{ true }}" bind:delete="deleteImg"></van-uploader>
+</view>
