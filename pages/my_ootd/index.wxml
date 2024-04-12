@@ -1,8 +1,19 @@
-<view>
-  <button bindtap="uploadUpper">上衣</button>
-  <button bindtap="uploadLower">裤子</button>
-  <button bindtap="uploadDress">裙子</button>
-  <button bindtap="uploadBody">身体</button>
-  <button bindtap="upload">上传</button>
-  <van-uploader file-list="{{imgUrl}}" max-count="1" deletable="{{ true }}" bind:delete="deleteImg"></van-uploader>
-</view>
+<Tabs tabs="{{tabs}}" bindtabsItemChange="handleTabsItemChange">
+
+  <view class="ootd_main">
+    <view class="ootd_item" wx:for="{{ootds}}" wx:key="ootd_id">
+      <view class="ootd_no_row">
+        <view>虚拟试衣编号</view>
+        <view>{{item.ootdNo}}</view>
+      </view>
+      <view>
+        <image src="{{baseUrl+'/image/ootdImgs/'+item.ootdImage}}" mode="widthFix" />
+      </view>
+      <view class="ootd_time_row">
+        <view class="ootd_time_text">虚拟试衣日期</view>
+        {{item.createDate}}
+      </view>
+    </view>
+  </view>
+
+</Tabs>

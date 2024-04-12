@@ -20,7 +20,11 @@ Page({
     });
   },
 
-  onLoad: function (options) {
+  onLoad: function () {
+    this.login();
+  },
+
+  login(){
     // 判断缓存中是否有token
     const token = wx.getStorageSync('token');
     if (!token) {
@@ -37,6 +41,7 @@ Page({
             }
             console.log("loginParam:", loginParam);
             // 把用户信息放到缓存中
+            wx.setStorageSync('loginParam', loginParam);
             wx.setStorageSync('userInfo', res[1].userInfo);
             this.wxlogin(loginParam);
             this.setData({

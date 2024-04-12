@@ -38,7 +38,7 @@ Page({
   QueryParams: {
     type: 0,
     page: 1, // 第几页
-    pageSize: 10 // 每页记录数
+    pageSize: 10, // 每页记录数
   },
 
   // 总页数
@@ -82,7 +82,7 @@ Page({
     })
   },
 
-  onShow: function (options) {
+  onShow: function () {
     // 获取当前的小程序的页面栈 -数组 长度最大是10个页面
     let pages = getCurrentPages();
     console.log(pages)

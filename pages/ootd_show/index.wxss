@@ -1,1 +1,13 @@
-/* pages/ootd_show/index.wxss */
+.index_hot_product .list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.index_hot_product .list .ootd_detail {
+  width: 46%;
+  margin: 15rpx;
+  text-align: center;
+  border: black 1px solid;
+}
+.index_hot_product .list .ootd_detail navigator image {
+  background-color: #F5F5F5;
+}

@@ -1,0 +1,24 @@
+<view class="container">
+
+  <view class="">
+    <view class="choose">请选择要生成的服装类型</view>
+    <van-radio-group value="{{ radio }}" bind:change="onChange" class="radio">
+      <van-radio name="0" icon-size="24px" class="van-radio">衣服</van-radio>
+      <van-radio name="1" icon-size="24px" class="van-radio">裤子</van-radio>
+      <van-radio name="2" icon-size="24px" class="van-radio">裙子</van-radio>
+    </van-radio-group>
+  </view>
+
+  <view class="text">
+    <van-uploader data-type="garment" file-list="{{ garment }}" preview-full-image="true" multiple="true" preview-image="true" bind:after-read="uoload" max-count="1" bind:delete="del" />
+    <view>服装</view>
+  </view>
+
+  <view class="text">
+    <van-uploader data-type="model" file-list="{{ model }}" preview-full-image="true" multiple="true" preview-image="true" bind:after-read="uoload" max-count="1" bind:delete="del" />
+    <view class="text">模特</view>
+  </view>
+
+  <van-button round bind:tap="create" type="primary">上传</van-button>
+
+</view>

@@ -1,6 +1,7 @@
-
-<view>
-  <van-uploader file-list="{{ fileList }}" preview-full-image="true" multiple="true" preview-image="true" bind:after-read="show" max-count="5" bind:delete="del" />
-  
-  <van-button bind:tap="uoload">上传</van-button>
+<view class="index_hot_product">
+  <view class="list">
+    <view class="ootd_detail" wx:for="{{ootdImageList}}" wx:for-item="ootdImage" wx:for-index="index" wx:key="id">
+      <image mode="aspectFit" src="{{baseUrl+'/image/ootdImgs/'+ootdImage.ootdImage}}"></image>
+    </view>
   </view>
+</view>

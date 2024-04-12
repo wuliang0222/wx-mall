@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.container .choose {
+  font-size: 20px;
+}
+.container .radio {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: left;
+  flex-direction: row;
+}
+.container .radio .van-radio {
+  margin-bottom: 10px;
+}
+.container .text {
+  text-align: center;
+}
+.container > view {
+  margin-bottom: 20px;
+}

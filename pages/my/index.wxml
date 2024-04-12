@@ -1,7 +1,7 @@
 <view class="user_info">
   <!-- 用户背景信息开始 -->
   <view class="user_info_bg">
-    <view class="user_info_warp">
+    <view class="user_info_warp" bind:tap="login">
       <image class="user_icon" src="{{userInfo.avatarUrl}}"></image>
       <view class="user_name">{{userInfo.nickName}}</view>
     </view>
@@ -41,12 +41,22 @@
     <!-- 收货地址结束 -->
 
     <!-- 换装管理开始 -->
-    <navigator url="/pages/my_ootd/index">
+    <navigator url="/pages/my_ootd/index?type=0">
       <view class="photo_warp">
         虚拟试衣管理
       </view>
     </navigator>
     <!-- 换装管理结束 -->
+
+    <!-- 换装管理开始 -->
+    <navigator url="/pages/create_ootd/index">
+      <view class="photo_warp">
+        生成虚拟试衣
+      </view>
+    </navigator>
+    <!-- 换装管理结束 -->
+
+
 
     <!-- 应用相关信息开始 -->
     <view class="app_info_warp">
