@@ -136,7 +136,7 @@ Page({
     });
     wx.showModal({
       title: '提示',
-      content: '正在生成，请稍后。。。',
+      content: '正在生成，请稍后在虚拟试衣管理查看',
     })
 
   },

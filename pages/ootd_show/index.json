@@ -1,4 +1,6 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "虚拟试衣"
+  "navigationBarTitleText": "虚拟试衣",
+  "enablePullDownRefresh":true,
+  "backgroundTextStyle":"dark"
 }

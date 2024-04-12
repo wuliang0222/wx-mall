@@ -49,7 +49,6 @@ Page({
     tabs.forEach((v, i) => {
       if (i == index) {
         v.isActive = true;
-        console.log(v)
         this.setData({
           type: v.id
         })
@@ -57,7 +56,6 @@ Page({
         v.isActive = false;
       }
     });
-    console.log("this.data.type:", this.data.type)
     this.setData({
       tabs
     })
@@ -83,7 +81,6 @@ Page({
       url: '/my/ootd/list',
       data: this.QueryParams
     });
-    console.log(res)
     this.totalPage = res.totalPage;
     this.setData({
       ootds: [...this.data.ootds, ...res.ootdImageList] // 拼接数组
@@ -94,7 +91,6 @@ Page({
     this.setData({
       baseUrl: getBaseUrl()
     })
-    console.log(this.data.baseUrl)
   },
 
   onShow: function () {

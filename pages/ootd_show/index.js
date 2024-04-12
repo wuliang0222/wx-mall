@@ -8,21 +8,74 @@ Page({
     baseUrl: '',
     ootdImageList: []
   },
-  onLoad: function () {
-    this.getOotdImageList();
+  // 接口要的参数
+  QueryParams: {
+    page: 1, // 第几页
+    pageSize: 10 // 每页记录数
   },
 
+  // 总页数
+  totalPage: 1,
+
+  // 获取全部虚拟试衣
   async getOotdImageList() {
     const result = await requestUtil({
       url: "/my/ootd/listAll",
-      method: "GET"
+      data: this.QueryParams
     });
-    console.log(result)
-    const baseUrl = getBaseUrl();
+
     this.setData({
-      ootdImageList: result.ootdImageList,
-      baseUrl: baseUrl
+      ootdImageList: [...this.data.ootdImageList, ...result.ootdImageList],
+      totalPage: result.totalPage
     })
   },
+
+  onLoad: function () {
+    this.setData({
+      baseUrl: getBaseUrl()
+    })
+    this.getOotdImageList();
+  },
+
+  onShow: function () {
+    let pages = getCurrentPages();
+    let currentPage = pages[pages.length - 1];
+    console.log(currentPage.options);
+    this.getOotdImageList();
+  },
+
+  /**
+   * 下拉
+   */
+  onPullDownRefresh: function () {
+    console.log("下拉刷新")
+    // 重置数组
+    this.setData({
+      ootdImageList: []
+    });
+    // 重置页码
+    this.QueryParams.page = 1;
+    // 重新发送请求
+    this.getOotdImageList();
+    // 手动关闭等待效果
+    wx.stopPullDownRefresh({})
+  },
+
+  /**
+   * 上拉
+   */
+  onReachBottom: function () {
+    console.log("上拉")
+    // 判断有没有下一页数据
+    if (this.QueryParams.page >= this.totalPage) {
+      // 没有下一页数据
+      wx.showToast({
+        title: '没有下一页数据了'
+      })
+    } else {
+      this.QueryParams.page++;
+      this.getOotdImageList();
+    }
+  }
 
 })

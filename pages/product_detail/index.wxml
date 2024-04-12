@@ -9,7 +9,7 @@
 <view class="product_show">
   <view class="product_price">¥{{productObj.price}}</view>
   <view class="product_change" bindtap="">
-    <navigator url="/pages/my_photo/index" open-type="navigate">
+    <navigator url="/pages/create_ootd/index" open-type="navigate">
       换装
     </navigator>
   </view>
