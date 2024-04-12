@@ -23,10 +23,10 @@ Page({
       url: "/my/ootd/listAll",
       data: this.QueryParams
     });
-
+    // 放到setdata不会刷新
+    this.totalPage = result.totalPage;
     this.setData({
       ootdImageList: [...this.data.ootdImageList, ...result.ootdImageList],
-      totalPage: result.totalPage
     })
   },
 

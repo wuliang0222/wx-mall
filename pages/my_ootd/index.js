@@ -96,7 +96,6 @@ Page({
   onShow: function () {
     // 获取当前的小程序的页面栈 -数组 长度最大是10个页面
     let pages = getCurrentPages();
-    console.log(pages)
     // 数组中，索引最大的页面就是当前页面
     let currentPage = pages[pages.length - 1];
     console.log(currentPage.options);
