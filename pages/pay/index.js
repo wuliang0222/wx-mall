@@ -170,14 +170,14 @@ Page({
       method: "POST",
       data: orderParams
     });
+    console.log("res",res)
 
-    if (res.code === 0) {
+    if (res.code === 0) {// 订单成功
       // 删除缓冲中已经支付的商品
       let newCart = wx.getStorageSync('cart');
       newCart = newCart.filter(v => !v.checked);
       wx.setStorageSync('cart', newCart);
-
-      // 显示支付成功
+      // 确认支付
       if (this.data.status == 2) {
         wx.showToast({
           title: '支付成功',
@@ -185,11 +185,10 @@ Page({
           mask: true
         });
       }
-
-    } else {
-      // 显示支付失败
+    } else if(res.code == 500){ // 订单失败
+      console.log(res.msg)
       wx.showToast({
-        title: '支付失败',
+        title: res.msg,
         icon: 'error',
         mask: true
       })

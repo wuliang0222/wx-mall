@@ -17,6 +17,9 @@
 
   <!-- 商品大类分类 开始 -->
   <view class="index_bigType">
+    <view class="product_title">
+      商品大类
+    </view>
     <view class="bigTypeRow">
       <navigator bindtap="handleTypeJump" data-index="{{index}}" wx:for="{{bigTypeList_row1}}" wx:for-item="bigType" wx:for-index="index" wx:key="id">
         <image mode="widthFix" src="{{baseUrl+'/image/bigType/'+bigType.image}}"></image>
