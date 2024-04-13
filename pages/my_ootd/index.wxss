@@ -13,3 +13,13 @@
   padding: 10rpx 0;
   justify-content: space-between;
 }
+
+.right{
+  background-color: red;
+  height: inherit;
+  width: 65px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

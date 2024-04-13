@@ -46,16 +46,16 @@ Page({
     // 1. 是否有token
     const token = wx.getStorageSync('token');
     if (!token) { // 没有token
-      this.updateUserInfo();
-      this.wxlogin();
+      await this.updateUserInfo();
+      // await this.wxlogin();
     } else { //token存在 验证是否有效
       console.log("token已存在")
       this.validate(token);
     }
   },
 
-  updateUserInfo() {
-    Promise.all([getLogin(), getUserProfile()]).then((res) => {
+  async updateUserInfo() {
+    await Promise.all([getLogin(), getUserProfile()]).then((res) => {
       let loginParam = {
         code: res[0].code,
         nickName: res[1].userInfo.nickName,
@@ -64,41 +64,7 @@ Page({
       wx.setStorageSync('userInfo', res[1].userInfo);
       wx.setStorageSync('loginParam', loginParam);
     });
-  },
-
-  /**
-   * 验证token是否有效
-   */
-  async validate(token) {
-    //发送请求
-    const result = await requestUtil({
-      url: "/user/validate",
-      method: "post",
-      header: {
-        "token": token
-      }
-    });
-    //判断token是否有效
-    if (result.code != 0) { //token失效
-      console.log("token失效")
-      wx.showModal({
-        title: '提示',
-        content: '用户信息已过期，请重新登录',
-        success: (res) => { //确认重新登录
-          if (res.confirm) {
-            this.updateUserInfo();
-            this.wxlogin();
-          } else { //取消登录
-            wx.switchTab({
-              url: '/pages/cart/index'
-            })
-          }
-        }
-      })
-    } else {
-      console.log("token有效");
-      this.sureOrder();
-    }
+    await this.wxlogin();
   },
 
   /**
@@ -120,9 +86,45 @@ Page({
   },
 
   /**
+   * 验证token是否有效
+   */
+  async validate(token) {
+    //发送请求
+    const result = await requestUtil({
+      url: "/user/validate",
+      method: "post",
+      header: {
+        "token": token
+      }
+    });
+
+    //判断token是否有效
+    if (result.code != 0) { // token失效
+      console.log("token失效")
+      wx.showModal({
+        title: '提示',
+        content: '用户信息已过期，请重新登录',
+        success: (res) => { // 确认重新登录
+          if (res.confirm) {
+            this.updateUserInfo();
+            this.wxlogin();
+          } else { // 取消登录
+            wx.switchTab({
+              url: '/pages/cart/index'
+            })
+          }
+        }
+      })
+    } else { // token有效
+      this.sureOrder();
+    }
+  },
+
+
+  /**
    * 确认支付弹窗
    */
-  async sureOrder() {
+  sureOrder() {
     wx.showModal({
       title: '提示',
       content: '确认支付吗？',
@@ -170,9 +172,9 @@ Page({
       method: "POST",
       data: orderParams
     });
-    console.log("res",res)
+    console.log("res", res)
 
-    if (res.code === 0) {// 订单成功
+    if (res.code === 0) { // 订单成功
       // 删除缓冲中已经支付的商品
       let newCart = wx.getStorageSync('cart');
       newCart = newCart.filter(v => !v.checked);
@@ -185,8 +187,7 @@ Page({
           mask: true
         });
       }
-    } else if(res.code == 500){ // 订单失败
-      console.log(res.msg)
+    } else if (res.code == 500) { // 订单失败
       wx.showToast({
         title: res.msg,
         icon: 'error',

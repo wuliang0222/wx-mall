@@ -1,11 +1,8 @@
 {
   "usingComponents": {
-    "Tabs":"../../components/Tabs/Tabs",
     "van-swipe-cell": "@vant/weapp/swipe-cell/index",
     "van-cell": "@vant/weapp/cell/index",
     "van-cell-group": "@vant/weapp/cell-group/index"
   },
-  "navigationBarTitleText": "虚拟试衣管理",
-  "enablePullDownRefresh":true,
-  "backgroundTextStyle":"dark"
+  "navigationBarTitleText": "测试"
 }

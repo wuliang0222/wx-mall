@@ -6,6 +6,20 @@
     "miniprogram": {
       "list": [
         {
+          "name": "虚拟试衣管理",
+          "pathName": "pages/my_ootd/index",
+          "query": "type=0",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "test",
+          "pathName": "pages/test/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "生成虚拟试衣",
           "pathName": "pages/create_ootd/index",
           "query": "",

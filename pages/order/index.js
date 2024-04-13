@@ -28,7 +28,7 @@ Page({
       },
       {
         id: 3,
-        value: "退款/退货",
+        value: "退款/售后",
         isActive: false
       }
     ]
@@ -130,6 +130,38 @@ Page({
       this.QueryParams.page++;
       this.getOrders();
     }
+  },
+
+  /**
+   * 关闭
+   */
+  async onClose(e) {
+    let id = e.currentTarget.dataset.id;
+    // console.log(id)
+    let that = this;
+
+    wx.showModal({
+      content: '确定要删除吗？',
+      success:async function (res) {
+        if (res.confirm) {
+          console.log("删除")
+          console.log(id)
+          let result = await requestUtil({
+            url: '/my/order/delete',
+            data: {
+              id
+            }
+          });
+          that.onPullDownRefresh();
+          console.log("that.ootds:",that.ootds);
+          if(result.code === 0){
+            wx.showToast({
+              title: '成功删除'
+            })
+          }
+        }
+      },
+    })
   }
 
 })

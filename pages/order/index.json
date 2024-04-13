@@ -1,6 +1,9 @@
 {
   "usingComponents": {
-    "Tabs":"../../components/Tabs/Tabs"
+    "Tabs":"../../components/Tabs/Tabs",
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index"
   },
   "navigationBarTitleText": "订单查询",
   "enablePullDownRefresh":true,

@@ -85,15 +85,16 @@ Page({
     this.setData({
       ootds: [...this.data.ootds, ...res.ootdImageList] // 拼接数组
     })
+    console.log("ootds:", this.data.ootds)
   },
 
-  onLoad: function () {
+  onLoad() {
     this.setData({
       baseUrl: getBaseUrl()
     })
   },
 
-  onShow: function () {
+  onShow() {
     // 获取当前的小程序的页面栈 -数组 长度最大是10个页面
     let pages = getCurrentPages();
     // 数组中，索引最大的页面就是当前页面
@@ -110,7 +111,7 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh() {
     console.log("下拉")
     // 重置数组
     this.setData({
@@ -127,7 +128,7 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom() {
     // 判断有没有下一页数据
     if (this.QueryParams.page >= this.totalPage) {
       // 没有下一页数据
@@ -140,6 +141,38 @@ Page({
       this.QueryParams.page++;
       this.getOotds();
     }
+  },
+
+  /**
+   * 关闭
+   */
+  async onClose(e) {
+    let id = e.currentTarget.dataset.id;
+    // console.log(id)
+    let that = this;
+
+    wx.showModal({
+      content: '确定要删除吗？',
+      success:async function (res) {
+        if (res.confirm) {
+          console.log("删除")
+          console.log(id)
+          let result = await requestUtil({
+            url: '/my/ootd/delete',
+            data: {
+              id
+            }
+          });
+          that.onPullDownRefresh();
+          console.log("that.ootds:",that.ootds);
+          if(result.code === 0){
+            wx.showToast({
+              title: '成功删除'
+            })
+          }
+        }
+      },
+    })
   }
 
 })
