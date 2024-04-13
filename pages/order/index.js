@@ -75,14 +75,14 @@ Page({
       url: '/my/order/list',
       data: this.QueryParams
     });
-    console.log(res)
     this.totalPage = res.totalPage;
     this.setData({
       orders: [...this.data.orders, ...res.orderList] // 拼接数组
     })
+    console.log("this.data.orders:", this.data.orders)
   },
 
-  onShow: function () {
+  onShow() {
     // 获取当前的小程序的页面栈 -数组 长度最大是10个页面
     let pages = getCurrentPages();
     console.log(pages)
@@ -100,7 +100,7 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh() {
     console.log("下拉")
     // 重置数组
     this.setData({
@@ -117,7 +117,7 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom() {
     // 判断有没有下一页数据
     if (this.QueryParams.page >= this.totalPage) {
       // 没有下一页数据

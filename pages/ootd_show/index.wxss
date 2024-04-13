@@ -6,8 +6,9 @@
   width: 46%;
   margin: 15rpx;
   text-align: center;
-  border: black 1px solid;
+  border: pink 1px solid;
+  border-radius: 20px;
 }
-.index_hot_product .list .ootd_detail navigator image {
-  background-color: #F5F5F5;
+.index_hot_product .list .ootd_detail image {
+  border-radius: 20px;
 }
