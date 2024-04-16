@@ -18,7 +18,8 @@
         </view>
 
         <view slot="right" class="right" bind:tap="onClose" data-id="{{item.id}}">删除</view>
-
+        <!-- <button wx:if="{{item.show == 2}}" type="primary" bindtap="updateStatus" >展示</button>
+        <button wx:if="{{item.show == 1}}" type="primary" bindtap="updateStatus">支付</button> -->
       </van-swipe-cell>
 
     </view>

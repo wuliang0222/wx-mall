@@ -10,7 +10,7 @@
   <view class="product_price">¥{{productObj.price}}</view>
   <view class="product_change" bindtap="">
     <navigator url="/pages/create_ootd/index" open-type="navigate">
-      换装
+      虚拟试衣
     </navigator>
   </view>
 </view>

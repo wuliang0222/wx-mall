@@ -31,7 +31,6 @@ Page({
 
   // 商品数量的编辑功能
   handleItemNumEdit(e) {
-
     const {
       operation,
       id

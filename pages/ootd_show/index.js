@@ -23,6 +23,7 @@ Page({
       url: "/my/ootd/listAll",
       data: this.QueryParams
     });
+    console.log("result:",result)
     // 放到setdata不会刷新
     this.totalPage = result.totalPage;
     this.setData({

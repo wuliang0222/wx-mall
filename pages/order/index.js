@@ -23,14 +23,20 @@ Page({
       },
       {
         id: 2,
-        value: "待收货",
+        value: "待发货",
         isActive: false
       },
       {
         id: 3,
-        value: "退款/售后",
+        value: "待收货",
+        isActive: false
+      },
+      {
+        id: 4,
+        value: "已收货",
         isActive: false
       }
+
     ]
   },
 
@@ -137,15 +143,12 @@ Page({
    */
   async onClose(e) {
     let id = e.currentTarget.dataset.id;
-    // console.log(id)
     let that = this;
 
     wx.showModal({
       content: '确定要删除吗？',
-      success:async function (res) {
+      success: async function (res) {
         if (res.confirm) {
-          console.log("删除")
-          console.log(id)
           let result = await requestUtil({
             url: '/my/order/delete',
             data: {
@@ -153,10 +156,41 @@ Page({
             }
           });
           that.onPullDownRefresh();
-          console.log("that.ootds:",that.ootds);
-          if(result.code === 0){
+          console.log("that.ootds:", that.ootds);
+          if (result.code === 0) {
             wx.showToast({
               title: '成功删除'
+            })
+          }
+        }
+      },
+    })
+  },
+
+  async updateStatus(e) {
+    let id = e.currentTarget.dataset.id;
+    let status = e.currentTarget.dataset.status;
+    let that = this;
+    let content;
+    if (status == 2) {
+      content = "支付"
+    } else content = "收货"
+    wx.showModal({
+      content: "确定要" + content + "吗？",
+      success: async function (res) {
+        if (res.confirm) {
+          let result = await requestUtil({
+            url: '/my/order/updateStatus',
+            data: {
+              id,
+              status
+            }
+          });
+          console.log("res:", result)
+          that.onPullDownRefresh();
+          if (result.code === 0) {
+            wx.showToast({
+              title: "成功" + content
             })
           }
         }

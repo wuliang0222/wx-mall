@@ -38,13 +38,13 @@ Page({
       url: "/bigType/findAll",
       method: "GET"
     });
-    console.log(result)
     const bigTypeList_row1 = result.message.filter((item, index) => {
       return index < 5;
     })
     const bigTypeList_row2 = result.message.filter((item, index) => {
       return index >= 5;
     })
+
     const baseUrl = getBaseUrl();
     this.setData({
       bigTypeList: result,

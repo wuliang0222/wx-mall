@@ -5,12 +5,13 @@ import {
 } from "../../utils/requestUtil.js";
 import regeneratorRuntime from '../../lib/runtime/runtime';
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    productObj: {productIntroImgs:""},
+    productObj: {
+      productIntroImgs: ""
+    },
     baseUrl: '',
     activeIndex: 0
   },
@@ -47,7 +48,7 @@ Page({
     const baseUrl = getBaseUrl();
     this.setData({
       productObj: {
-        ...result.message,  // 保留原有 productObj 的其他属性
+        ...result.message, // 保留原有 productObj 的其他属性
         productIntroImgs: result.message.productIntroImgs.replace(/<img/gi, '<img style="width:100%;height:auto;"')
       },
       baseUrl

@@ -17,7 +17,8 @@
           <view class="order_time_value">{{item.createDate}}</view>
         </view>
         <view slot="right" class="right" bind:tap="onClose" data-id="{{item.id}}">删除</view>
-
+        <button wx:if="{{item.status == 1}}" type="primary" bindtap="updateStatus" data-id="{{item.id}}" data-status="2">支付</button>
+        <button wx:if="{{item.status == 3}}" type="primary" bindtap="updateStatus" data-id="{{item.id}}" data-status="4">确认收货</button>
       </van-swipe-cell>
 
     </view>

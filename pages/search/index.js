@@ -19,7 +19,6 @@ Page({
     const {
       value
     } = e.detail;
-    console.log(value)
     if (!value.trim()) {
       this.setData({
         goods: [],
@@ -38,14 +37,13 @@ Page({
   },
 
   // 发送请求获取结果
-  async search(q) {
+  async search(query) {
     const res = await requestUtil({
       url: "/product/search",
       data: {
-        q
+        query
       }
     });
-    console.log(res);
     this.setData({
       productList: res.message
     })
