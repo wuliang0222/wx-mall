@@ -10,8 +10,7 @@
     "pages/order/index",
     "pages/ootd_show/index",
     "pages/my_ootd/index",
-    "pages/create_ootd/index",
-    "pages/test/index"
+    "pages/create_ootd/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -40,11 +40,9 @@ export const getLogin = () => {
       timeout: 5000,
       success: (res) => {
         resolve(res);
-        // console.log(res.code)
       },
       fail: (err) => {
         reject(err);
-        // console.log(res.code)
       }
     })
   })

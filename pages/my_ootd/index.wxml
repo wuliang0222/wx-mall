@@ -2,7 +2,7 @@
   <view class="ootd_main">
     <view class="ootd_item" wx:for="{{ootds}}" wx:key="ootd_id">
 
-      <van-swipe-cell right-width="{{ 65 }}"  >
+      <van-swipe-cell right-width="{{ 65 }}">
         <view class="ootd_no_row">
           <view>虚拟试衣编号</view>
           <view>{{item.ootdNo}}</view>
@@ -18,8 +18,10 @@
         </view>
 
         <view slot="right" class="right" bind:tap="onClose" data-id="{{item.id}}">删除</view>
-        <!-- <button wx:if="{{item.show == 2}}" type="primary" bindtap="updateStatus" >展示</button>
-        <button wx:if="{{item.show == 1}}" type="primary" bindtap="updateStatus">支付</button> -->
+        <view wx:if="{{item.status == 2}}">
+          <button wx:if="{{item.showOotd == false}}" type="primary" bindtap="updateShow" data-id="{{item.id}}" data-showOotd="true">展示</button>
+          <button wx:if="{{item.showOotd == true}}" type="warn" bindtap="updateShow" data-id="{{item.id}}" data-showOotd="false">隐藏</button>
+        </view>
       </van-swipe-cell>
 
     </view>
