@@ -95,6 +95,7 @@ Page({
   },
 
   onShow() {
+    this.validate();
     // 获取当前的小程序的页面栈 -数组 长度最大是10个页面
     let pages = getCurrentPages();
     // 数组中，索引最大的页面就是当前页面
@@ -106,6 +107,36 @@ Page({
     this.changeTitleByIndex(type);
     this.QueryParams.type = type;
     this.getOotds();
+  },
+
+  /**
+   * 鉴权
+   */
+  async validate() {
+    const token = wx.getStorageSync('token');
+    if (!token) { // 没有token
+      wx.showModal({
+        title: '提示',
+        content: '用户信息已过期，请重新登录',
+      })
+    } else { //token存在 验证是否有效
+      //发送请求
+      const result = await requestUtil({
+        url: "/user/validate",
+        method: "post",
+        header: {
+          "token": token
+        }
+      });
+      //判断token是否有效
+      if (result.code != 0) { // token失效
+        wx.showModal({
+          title: '提示',
+          content: '用户信息已过期，请重新登录',
+        })
+      }
+    }
+
   },
 
   /**
@@ -153,7 +184,7 @@ Page({
 
     wx.showModal({
       content: '确定要删除吗？',
-      success:async function (res) {
+      success: async function (res) {
         if (res.confirm) {
           console.log("删除")
           console.log(id)
@@ -164,10 +195,41 @@ Page({
             }
           });
           that.onPullDownRefresh();
-          console.log("that.ootds:",that.ootds);
-          if(result.code === 0){
+          console.log("that.ootds:", that.ootds);
+          if (result.code === 0) {
             wx.showToast({
               title: '成功删除'
+            })
+          }
+        }
+      },
+    })
+  },
+
+  async updateShow(e){
+    let showOotd = e.currentTarget.dataset.showootd === "true";//要改变成这个状态
+    let id = e.currentTarget.dataset.id;
+    console.log("showOotd",showOotd)
+    console.log("id",id)
+    let that = this;
+    let content = showOotd ? "展示" : "隐藏";
+    console.log("content",content)
+    wx.showModal({
+      content: "确定要" + content + "吗？",
+      success: async function (res) {
+        if (res.confirm) {
+          let result = await requestUtil({
+            url: '/my/ootd/updateShowOotd',
+            data: {
+              id,
+              showOotd
+            }
+          });
+          console.log("res:", result)
+          that.onPullDownRefresh();
+          if (result.code === 0) {
+            wx.showToast({
+              title: "成功" + content
             })
           }
         }
